@@ -9,8 +9,6 @@ Creation of this package was inspired by @sideshow's [apns2](https://github.com/
 - Uses new Apple APNs HTTP/2 connection
 - Supports new iOS 10 features such as Collapse IDs, Subtitles and Mutable Notifications
 - Supports persistent connections to APNs
-- Fast, modular & easy to use
-- Tested and working in APNs production environment
 
 ## Cautions
 
