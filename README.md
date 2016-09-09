@@ -2,7 +2,7 @@
 
 apns2-client is a python package designed for simple, flexible and fast Apple Push Notifications on iOS, OSX and Safari using the new HTTP/2 Push provider API.
 
-Creation was inspired by @sideshow [apns2](https://github.com/sideshow/apns2) golang package.
+Creation of this package was inspired by @sideshow's [apns2](https://github.com/sideshow/apns2) golang package.
 
 ## Features
 
