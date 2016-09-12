@@ -19,7 +19,7 @@ MODE_DEV = "dev"
 
 class APNSClient(object):
 
-    def __init__(self, mode: str, client_cert: str):
+    def __init__(self, mode: str, client_cert: str, password=None):
         if mode == MODE_PROD:
             self.host = "api.push.apple.com"
         elif mode == MODE_DEV:
@@ -31,7 +31,7 @@ class APNSClient(object):
             host=self.host,
             port=443,
             secure=True,
-            ssl_context=init_context(cert=client_cert),
+            ssl_context=init_context(cert=client_cert, cert_password=password),
         )
 
     def get_headers(self, n: Notification, topic: str = None):
