@@ -50,7 +50,7 @@ class APNSClient(object):
     def push(self, n, device_token: str, topic: str = None) -> Response:
         url = "/3/device/{}".format(device_token)
         payload = n.payload.to_json()
-        log.error("Going to send payload: {}".format(payload))
+        log.debug("Going to send payload: {}".format(payload))
         headers = self.get_headers(n, topic=topic)
         stream_id = self.conn.request(
             method="POST", url=url,
