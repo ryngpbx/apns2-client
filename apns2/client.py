@@ -46,6 +46,7 @@ class APNSClient(object):
             headers["apns-priority"] = n.priority
         if n.expiration:
             headers["apns-expiration"] = n.expiration
+        return headers
 
     def push(self, n, device_token: str, topic: str = None) -> Response:
         url = "/3/device/{}".format(device_token)
