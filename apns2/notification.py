@@ -43,14 +43,14 @@ class PayloadAlert(object):
 class Payload(object):
     def __init__(
         self, alert=None, badge=None, sound=None, category=None,
-        custom={}, content_available=False, mutable_content=False,
+        custom=None, content_available=False, mutable_content=False,
     ):
         super().__init__()
         self.alert = alert
         self.badge = badge
         self.sound = sound
         self.category = category
-        self.custom = custom
+        self.custom = custom or {}
         self.content_available = content_available
         self.mutable_content = mutable_content
 
