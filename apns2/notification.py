@@ -15,7 +15,8 @@ class PayloadTooLargeError(Exception):
 class PayloadAlert(object):
     def __init__(
         self, body=None, action_loc_key=None, loc_key=None,
-        loc_args=None, launch_image=None, title=None,
+        loc_args=None, launch_image=None, title=None, title_loc_key=None,
+        title_loc_args=None
     ):
         super().__init__()
         self.body = body
@@ -24,6 +25,8 @@ class PayloadAlert(object):
         self.loc_key = loc_key
         self.loc_args = loc_args
         self.launch_image = launch_image
+        self.title_loc_key = title_loc_key
+        self.title_loc_args = title_loc_args
 
     def dict(self):
         d = {}
@@ -37,6 +40,11 @@ class PayloadAlert(object):
             d['loc-args'] = self.loc_args
         if self.launch_image:
             d['launch-image'] = self.launch_image
+        if self.title_loc_key:
+            d['title-loc-key'] = self.title_loc_key
+        if self.title_loc_args:
+            d['title-loc-args'] = self.title_loc_args
+
         return d
 
 
