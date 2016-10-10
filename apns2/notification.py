@@ -32,6 +32,8 @@ class PayloadAlert(object):
         d = {}
         if self.body:
             d['body'] = self.body
+        if self.title:
+            d['title'] = self.title
         if self.action_loc_key:
             d['action-loc-key'] = self.action_loc_key
         if self.loc_key:
