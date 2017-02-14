@@ -2,4 +2,4 @@
 
 from .client import APNSClient
 from .response import Response
-from .notification import Notification, Payload, PayloadAlert
+from .notification import Notification, Payload, PayloadAlert, PRIORITY_LOW, PRIORITY_HIGH
