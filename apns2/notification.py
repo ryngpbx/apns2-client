@@ -4,6 +4,8 @@ import ujson
 
 
 MAX_PAYLOAD_LENGTH = 2048
+PRIORITY_HIGH = "10"
+PRIORITY_LOW = "5"
 
 
 class PayloadTooLargeError(Exception):
@@ -127,8 +129,8 @@ class Notification(object):
         # http request.
         self.expiration = expiration
 
-        # The priority of the notification. Specify ether apns.PriorityHigh (10) or
-        # apns.PriorityLow (5) If you don't set this, the APNs server will set the
+        # The priority of the notification. Specify ether apns2.PRIORITY_HIGH (10) or
+        # apns2.PRIORITY_LOW (5) If you don't set this, the APNs server will set the
         # priority to 10.
         self.priority = priority
 

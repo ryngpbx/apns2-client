@@ -26,13 +26,13 @@ Creation of this package was inspired by @sideshow's [apns2](https://github.com/
 ## Example
 
 ```python
-from apns2 import APNSClient, Notification, Payload, PayloadAlert
+import apns2
 
 
-cli = APNSClient(mode="dev", client_cert="/your/path.pem")
-alert = PayloadAlert(body="body!", title="title!")
-payload = Payload(alert=alert)
-n = Notification(payload=payload, priority=5)
+cli = apns2.APNSClient(mode="dev", client_cert="/your/path.pem")
+alert = apns2.PayloadAlert(body="body!", title="title!")
+payload = apns2.Payload(alert=alert)
+n = apns2.Notification(payload=payload, priority=apns2.PRIORITY_LOW)
 response = cli.push(n=n, device_token="your_token")
 assert response.status_code == 200, response.reason
 assert response.apns_id
