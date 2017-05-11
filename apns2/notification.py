@@ -1,16 +1,17 @@
 # coding: utf-8
 
+from __future__ import absolute_import
 import ujson
 
 
 MAX_PAYLOAD_LENGTH = 2048
-PRIORITY_HIGH = "10"
-PRIORITY_LOW = "5"
+PRIORITY_HIGH = u"10"
+PRIORITY_LOW = u"5"
 
 
 class PayloadTooLargeError(Exception):
     def __init__(self, payload_size):
-        super().__init__()
+        super(PayloadTooLargeError, self).__init__()
         self.payload_size = payload_size
 
 
@@ -20,7 +21,7 @@ class PayloadAlert(object):
         loc_args=None, launch_image=None, title=None, title_loc_key=None,
         title_loc_args=None
     ):
-        super().__init__()
+        super(PayloadAlert, self).__init__()
         self.body = body
         self.title = title
         self.action_loc_key = action_loc_key
@@ -33,21 +34,21 @@ class PayloadAlert(object):
     def dict(self):
         d = {}
         if self.body:
-            d['body'] = self.body
+            d[u'body'] = self.body
         if self.title:
-            d['title'] = self.title
+            d[u'title'] = self.title
         if self.action_loc_key:
-            d['action-loc-key'] = self.action_loc_key
+            d[u'action-loc-key'] = self.action_loc_key
         if self.loc_key:
-            d['loc-key'] = self.loc_key
+            d[u'loc-key'] = self.loc_key
         if self.loc_args:
-            d['loc-args'] = self.loc_args
+            d[u'loc-args'] = self.loc_args
         if self.launch_image:
-            d['launch-image'] = self.launch_image
+            d[u'launch-image'] = self.launch_image
         if self.title_loc_key:
-            d['title-loc-key'] = self.title_loc_key
+            d[u'title-loc-key'] = self.title_loc_key
         if self.title_loc_args:
-            d['title-loc-args'] = self.title_loc_args
+            d[u'title-loc-args'] = self.title_loc_args
 
         return d
 
@@ -57,7 +58,7 @@ class Payload(object):
         self, alert=None, badge=None, sound=None, category=None,
         custom=None, content_available=False, mutable_content=False,
     ):
-        super().__init__()
+        super(Payload, self).__init__()
         self.alert = alert
         self.badge = badge
         self.sound = sound
@@ -72,43 +73,43 @@ class Payload(object):
             # Alert can be either a string or a PayloadAlert
             # object
             if isinstance(self.alert, PayloadAlert):
-                d['alert'] = self.alert.dict()
+                d[u'alert'] = self.alert.dict()
             else:
-                d['alert'] = self.alert
+                d[u'alert'] = self.alert
         if self.sound:
-            d['sound'] = self.sound
+            d[u'sound'] = self.sound
         if self.badge is not None:
-            d['badge'] = int(self.badge)
+            d[u'badge'] = int(self.badge)
         if self.category:
-            d['category'] = self.category
+            d[u'category'] = self.category
 
         if self.content_available:
-            d.update({'content-available': 1})
+            d.update({u'content-available': 1})
 
         if self.mutable_content:
-            d.update({'mutable-content': 1})
+            d.update({u'mutable-content': 1})
 
-        d = {'aps': d}
+        d = {u'aps': d}
         d.update(self.custom)
         return d
 
     def __repr__(self):
-        attrs = ("alert", "badge", "sound", "category", "custom")
-        args = ", ".join(["%s=%r" % (n, getattr(self, n)) for n in attrs])
-        return "%s(%s)" % (self.__class__.__name__, args)
+        attrs = (u"alert", u"badge", u"sound", u"category", u"custom")
+        args = u", ".join([u"%s=%r" % (n, getattr(self, n)) for n in attrs])
+        return u"%s(%s)" % (self.__class__.__name__, args)
 
-    def to_json(self) -> bytes:
+    def to_json(self):
         return ujson.dumps(self.dict())
 
 
 class Notification(object):
 
     def __init__(
-        self, payload: Payload,
+        self, payload,
         apns_id=None, collapse_id=None,
         expiration=None, priority=None,
     ):
-        super().__init__()
+        super(Notification, self).__init__()
         # An optional canonical UUID that identifies the notification. The canonical
         # form is 32 lowercase hexadecimal digits, displayed in five groups separated
         # by hyphens in the form 8-4-4-4-12. An example UUID is as follows:

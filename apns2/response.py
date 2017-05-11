@@ -2,58 +2,58 @@
 
 
 class Response(object):
-    ReasonPayloadEmpty = "PayloadEmpty"
+    ReasonPayloadEmpty = u"PayloadEmpty"
     # The message payload was too large. The maximum payload size is 4096 bytes.
-    ReasonPayloadTooLarge = "PayloadTooLarge"
+    ReasonPayloadTooLarge = u"PayloadTooLarge"
     # The apns-topic was invalid.
-    ReasonBadTopic = "BadTopic"
+    ReasonBadTopic = u"BadTopic"
     # Pushing to this topic is not allowed.
-    ReasonTopicDisallowed = "TopicDisallowed"
+    ReasonTopicDisallowed = u"TopicDisallowed"
     # The apns-id value is bad.
-    ReasonBadMessageID = "BadMessageId"
+    ReasonBadMessageID = u"BadMessageId"
     # The apns-expiration value is bad.
-    ReasonBadExpirationDate = "BadExpirationDate"
+    ReasonBadExpirationDate = u"BadExpirationDate"
     # The apns-priority value is bad.
-    ReasonBadPriority = "BadPriority"
+    ReasonBadPriority = u"BadPriority"
     # The device token is not specified in the request :path. Verify that the
     # :path header contains the device token.
-    ReasonMissingDeviceToken = "MissingDeviceToken"
+    ReasonMissingDeviceToken = u"MissingDeviceToken"
     # The specified device token was bad. Verify that the request contains a valid
     # token and that the token matches the environment.
-    ReasonBadDeviceToken = "BadDeviceToken"
+    ReasonBadDeviceToken = u"BadDeviceToken"
     # The device token does not match the specified topic.
-    ReasonDeviceTokenNotForTopic = "DeviceTokenNotForTopic"
+    ReasonDeviceTokenNotForTopic = u"DeviceTokenNotForTopic"
     # The device token is inactive for the specified topic.
-    ReasonUnregistered = "Unregistered"
+    ReasonUnregistered = u"Unregistered"
     # One or more headers were repeated.
-    ReasonDuplicateHeaders = "DuplicateHeaders"
+    ReasonDuplicateHeaders = u"DuplicateHeaders"
     # The client certificate was for the wrong environment.
-    ReasonBadCertificateEnvironment = "BadCertificateEnvironment"
+    ReasonBadCertificateEnvironment = u"BadCertificateEnvironment"
     # The certificate was bad.
-    ReasonBadCertificate = "BadCertificate"
+    ReasonBadCertificate = u"BadCertificate"
     # The specified action is not allowed.
-    ReasonForbidden = "Forbidden"
+    ReasonForbidden = u"Forbidden"
     # The request contained a bad :path value.
-    ReasonBadPath = "BadPath"
+    ReasonBadPath = u"BadPath"
     # The specified :method was not POST.
-    ReasonMethodNotAllowed = "MethodNotAllowed"
+    ReasonMethodNotAllowed = u"MethodNotAllowed"
     # Too many requests were made consecutively to the same device token.
-    ReasonTooManyRequests = "TooManyRequests"
+    ReasonTooManyRequests = u"TooManyRequests"
     # Idle time out.
-    ReasonIdleTimeout = "IdleTimeout"
+    ReasonIdleTimeout = u"IdleTimeout"
     # The server is shutting down.
-    ReasonShutdown = "Shutdown"
+    ReasonShutdown = u"Shutdown"
     # An internal server error occurred.
-    ReasonInternalServerError = "InternalServerError"
+    ReasonInternalServerError = u"InternalServerError"
     # The service is unavailable.
-    ReasonServiceUnavailable = "ServiceUnavailable"
+    ReasonServiceUnavailable = u"ServiceUnavailable"
     # The apns-topic header of the request was not specified and was required.
     # The apns-topic header is mandatory when the client is connected using a
     # certificate that supports multiple topics.
-    ReasonMissingTopic = "MissingTopic"
+    ReasonMissingTopic = u"MissingTopic"
 
     def __init__(
-        self, status_code: int, apns_id: str,
+        self, status_code, apns_id,
         timestamp=None, reason=None,
     ):
 
